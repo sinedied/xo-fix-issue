@@ -12,8 +12,10 @@ export default fp(async (fastify, options) => {
   console.log(path.resolve(process.cwd(), '../../.env'));
 
   fastify.decorate('someSupport', {
-    test: 'test',
+    test: process.env.TEST || 'test',
   });
+}, {
+  name: 'someSupport',
 });
 
 // When using .decorate you have to specify added properties for Typescript
