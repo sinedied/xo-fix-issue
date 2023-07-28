@@ -2,8 +2,9 @@
   "name": "xo-fix-issue",
   "version": "1.0.0",
   "description": "This project was bootstrapped with Fastify-CLI.",
+  "private": true,
   "type": "module",
-  "main": "app.ts",
+  "exports": "./src/app.ts",
   "directories": {
     "test": "test"
   },
@@ -13,7 +14,9 @@
     "build:ts": "tsc",
     "watch:ts": "tsc -w",
     "dev": "npm run build:ts && concurrently -k -p \"[{name}]\" -n \"TypeScript,App\" -c \"yellow.bold,cyan.bold\" \"npm:watch:ts\" \"npm:dev:start\"",
-    "dev:start": "fastify start --ignore-watch=.ts$ -w -l info -P dist/app.js"
+    "dev:start": "fastify start --ignore-watch=.ts$ -w -l info -P dist/app.js",
+    "lint": "xo",
+    "lint:fix": "xo --fix"
   },
   "keywords": [],
   "author": "",
@@ -35,6 +38,10 @@
     "typescript": "^4.5.4",
     "xo": "^0.55.0"
   },
+  "prettier": {
+    "trailingComma": "none",
+    "bracketSpacing": true
+  },
   "xo": {
     "space": true,
     "prettier": true,
@@ -42,5 +49,9 @@
       "node",
       "jest"
     ]
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
   }
 }
